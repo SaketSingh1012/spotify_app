@@ -1,10 +1,9 @@
-// SongImageComponent.jsx
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Box, Image, Text } from "@chakra-ui/react";
 
 const SongImageComponent = ({ image, handleImageClick, text, color }) => {
   return (
-    <Box>
+    <Box mx={3} boxShadow="md">
       <Image
         src={image}
         alt="Song Image"

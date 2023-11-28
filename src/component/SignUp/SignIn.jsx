@@ -1,8 +1,7 @@
-// SignIn.jsx
 import { useEffect, useState } from "react";
 import { auth, provider } from "../../Config";
 import { signInWithPopup } from "firebase/auth";
-import { Flex,  useToast } from "@chakra-ui/react";
+import { Flex, useToast } from "@chakra-ui/react";
 import Navbar from "./Navbar/Navbar";
 import MainContent from "./Banner/MainContent";
 import Page from "./CartBanner/Page";
@@ -53,18 +52,33 @@ const SignIn = () => {
   }, []);
 
   return (
-    <Flex direction="column" align="center" p={4}>
+    <>
       <Navbar value={value} handleClick={handleClick} />
-      {!value && <MainContent handleImageClick={handleImageClick} />}
-      {!value && (
-        <Page
-          isModalOpen={isModalOpen}
-          handleCloseModal={handleCloseModal}
-          selectedImage={selectedImage}
-          handleClick={handleClick}
-        />
-      )}
-    </Flex>
+
+      <Flex direction="column" align="center" p={4} >
+        <Flex
+          direction="column"
+          align="center"
+          p={4}
+          style={{
+            background:
+              "linear-gradient(to right, rgb(2,4,6), rgb(10,12,14))",
+            width: "100%",
+            height:"100vh"
+          }}
+        >
+          {!value && <MainContent handleImageClick={handleImageClick} />}
+          {!value && (
+            <Page
+              isModalOpen={isModalOpen}
+              handleCloseModal={handleCloseModal}
+              selectedImage={selectedImage}
+              handleClick={handleClick}
+            />
+          )}
+        </Flex>
+      </Flex>
+    </>
   );
 };
 

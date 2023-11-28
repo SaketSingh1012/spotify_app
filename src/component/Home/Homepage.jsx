@@ -1,9 +1,15 @@
-// Homepage.jsx
-
-import { Image, useToast } from '@chakra-ui/react';
-import { Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerFooter, Button } from '@chakra-ui/react';
-import { useDisclosure } from '@chakra-ui/react';
-import userLogo from '../../assets/user.png';
+import { Image, useToast } from "@chakra-ui/react";
+import {
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerFooter,
+  Button,
+} from "@chakra-ui/react";
+import { useDisclosure, Flex } from "@chakra-ui/react";
+import userLogo from "../../assets/user.png";
 
 const Homepage = () => {
   const toast = useToast();
@@ -12,10 +18,10 @@ const Homepage = () => {
   const logout = () => {
     localStorage.clear();
     toast({
-      title: 'Log Out Successful',
-      status: 'success',
+      title: "Log Out Successful",
+      status: "success",
       isClosable: true,
-      position: 'top',
+      position: "top",
       duration: 2000,
     });
     setTimeout(() => {
@@ -33,21 +39,34 @@ const Homepage = () => {
         onClick={onOpen}
         cursor="pointer"
         position="fixed"
-        top={4}
-        right={4}
+        top={6}
+        right={6}
       />
-      <Drawer isOpen={isOpen} placement='right' onClose={onClose} finalFocusRef={null}>
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        finalFocusRef={null}
+      >
         <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Profile</DrawerHeader>
+        <DrawerContent
+          height="100%"
+          background="linear-gradient(to right, rgb(100,200,100), rgb(50,150,50))"
+        >
+          <Flex height="90%">
+            <DrawerCloseButton />
+            <DrawerHeader>Profile</DrawerHeader>
+          </Flex>
+
           <DrawerFooter>
-            <Button variant='outline' mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme='red' onClick={logout}>
-              Log Out
-            </Button>
+            <Flex height="10%" justifyContent="flex-start" alignItems="flex-end">
+              <Button variant="outline" mr={10} onClick={onClose}>
+                Cancel
+              </Button>
+              <Button colorScheme="red" onClick={logout}>
+                Log Out
+              </Button>
+            </Flex>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

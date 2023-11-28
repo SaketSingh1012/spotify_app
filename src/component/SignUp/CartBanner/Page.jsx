@@ -1,29 +1,68 @@
-import PropTypes from 'prop-types';
-import { Flex, Box, Image, Text, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody } from "@chakra-ui/react";
+import PropTypes from "prop-types";
+import {
+  Flex,
+  Box,
+  Image,
+  Text,
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+} from "@chakra-ui/react";
 
-const Page = ({ isModalOpen, handleCloseModal, selectedImage, handleClick }) => {
+const Page = ({
+  isModalOpen,
+  handleCloseModal,
+  selectedImage,
+  handleClick,
+}) => {
   return (
     <Modal isOpen={isModalOpen} onClose={handleCloseModal} size="xl">
       <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Start listening with a free Spotify account.</ModalHeader>
-        <ModalCloseButton />
+      <ModalContent
+        background="linear-gradient(to right, rgb(15,25,35), rgb(20,40,60))"
+        height="60%"
+      >
+        <ModalHeader color="white" mt="7%">
+          Start listening with a free Spotify account.
+        </ModalHeader>
+        <ModalCloseButton color="white" />
         <ModalBody>
           <Flex>
             <Box flex="1">
               {selectedImage && (
-                <Image src={selectedImage} alt="Selected Song" w="100%" h="100%" />
+                <Image
+                  src={selectedImage}
+                  alt="Selected Song"
+                  w="100%"
+                  h="100%"
+                  borderRadius="1rem"
+                />
               )}
             </Box>
             <Box flex="1" p={4}>
-              <Text fontWeight="bold" color="blue.500">
-                Sign up now to enjoy unlimited music!
-              </Text>
-              {selectedImage && (
-                <Button colorScheme="green" mt={4} borderRadius="20px" onClick={handleClick}>
-                  Sign Up
-                </Button>
-              )}
+              <Flex
+                justifyContent="center"
+                flexDirection="column"
+                ml={3}
+                mt={12}
+              >
+                <Text fontWeight={600} fontSize="12pt" color="blue.500" mb={6}>
+                  Sign up now to enjoy unlimited music!
+                </Text>
+                {selectedImage && (
+                  <Button
+                    colorScheme="yellow"
+                    borderRadius="20px"
+                    onClick={handleClick}
+                  >
+                    Sign Up
+                  </Button>
+                )}
+              </Flex>
             </Box>
           </Flex>
         </ModalBody>
